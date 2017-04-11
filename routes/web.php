@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['middleware' => 'api.token'], function () {
+    Route::post('enterprise', 'EnterController@create');
+    Route::delete('enterprise/{id}', 'EnterController@delete');
+});
