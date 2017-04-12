@@ -17,4 +17,7 @@ Route::get('/', function () {
 Route::group(['middleware' => 'api.token'], function () {
     Route::post('enterprise', 'EnterController@create');
     Route::delete('enterprise/{id}', 'EnterController@delete');
+    Route::get('/enterprise/{page}/{limit}', 'EnterController@all');
+    Route::get('/enterprise/{id}', 'EnterController@show');
 });
+Route::put('enterprise/{id}', 'EnterController@put');
