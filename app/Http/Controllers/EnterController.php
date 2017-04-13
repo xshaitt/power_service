@@ -52,6 +52,14 @@ class EnterController extends Controller
         return response()->json($jsonData);
     }
 
+    public function alls()
+    {
+        $jsonData['status'] = 200;
+        $jsonData['message'] = '查询成功！';
+        $jsonData['data'] = Enterprise::all()->toArray();
+        return response()->json($jsonData);
+    }
+
     public function show(Request $request, $id)
     {
         $jsonData['status'] = 200;
