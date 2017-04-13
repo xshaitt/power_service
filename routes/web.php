@@ -21,11 +21,14 @@ Route::group(['middleware' => 'api.token'], function () {
     Route::get('/enterprise/{page}/{limit}', 'EnterController@all');
     Route::get('/enterprise/{id}', 'EnterController@show');
     Route::put('enterprise/{id}', 'EnterController@put');
-});
-Route::post('/user','UserController@create');
-Route::delete('/user/{id}','UserController@delete');
-Route::get('/user/show/{id}','UserController@show');
-Route::get('/user/{page}/{limit}', 'UserController@all');
-Route::put('user/{id}', 'UserController@put');
+    Route::get('/enterprises', 'EnterController@alls');
 
-Route::get('/enterprises','EnterController@alls');
+
+    Route::post('/user', 'UserController@create');
+    Route::delete('/user/{id}', 'UserController@delete');
+    Route::get('/user/show/{id}', 'UserController@show');
+    Route::get('/user/{page}/{limit}', 'UserController@all');
+    Route::put('user/{id}', 'UserController@put');
+});
+
+Route::post('/user/login', 'UserController@login');

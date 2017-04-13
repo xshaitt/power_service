@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -81,6 +82,21 @@ class UserController extends Controller
         } else {
             $jsonData['status'] = 404;
             $jsonData['message'] = '不存在此条记录!';
+        }
+        return response()->json($jsonData);
+    }
+
+    public function login(Request $request)
+    {
+        $data = $request->all();
+        $jsonData['status'] = 200;
+        $jsonData['message'] = '登录成功！';
+        if (Auth::attempt($data)) {
+            $jsonData['data'] = Auth::user();
+        } else {
+            $jsonData['status'] = 300;
+            $jsonData['message'] = '登录失败，请检查用户名与密码';
+            $jsonData['data'] = [];
         }
         return response()->json($jsonData);
     }
