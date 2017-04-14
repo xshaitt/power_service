@@ -57,6 +57,7 @@ class PowerController extends Controller
     {
         $jsonData['status'] = 200;
         $jsonData['message'] = '查询成功！';
+        $
         $limit = $limit > 100 ? 100 : $limit;
         --$page;
         $page = $page < 0 ? 0 : $page;
