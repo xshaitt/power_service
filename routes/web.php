@@ -29,6 +29,12 @@ Route::group(['middleware' => 'api.token'], function () {
     Route::get('/user/show/{id}', 'UserController@show');
     Route::get('/user/{page}/{limit}', 'UserController@all');
     Route::put('user/{id}', 'UserController@put');
-});
+    Route::post('/user/login', 'UserController@login');
 
-Route::post('/user/login', 'UserController@login');
+    //电源管家
+    Route::post('/power', 'PowerController@create');
+    Route::delete('/power/{id}', 'PowerController@delete');
+    Route::get('/power/show/{id}', 'PowerController@show');
+    Route::get('/power/{page}/{limit}', 'PowerController@all');
+    Route::put('power/{id}', 'PowerController@put');
+});
