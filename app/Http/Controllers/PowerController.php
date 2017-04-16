@@ -57,7 +57,6 @@ class PowerController extends Controller
     {
         $jsonData['status'] = 200;
         $jsonData['message'] = '查询成功！';
-        $
         $limit = $limit > 100 ? 100 : $limit;
         --$page;
         $page = $page < 0 ? 0 : $page;
@@ -81,6 +80,16 @@ class PowerController extends Controller
             $jsonData['status'] = 404;
             $jsonData['message'] = '不存在此条记录!';
         }
+        return response()->json($jsonData);
+    }
+
+    public function allWhere(Request $request)
+    {
+        $jsonData['status'] = 200;
+        $jsonData['message'] = '查询成功！';
+        $where = $request->get('where', []);
+        $jsonData['data'] = Power::where($where)->get()->toArray();
+        $jsonData['total'] = Power::all()->count();
         return response()->json($jsonData);
     }
 }

@@ -37,4 +37,6 @@ Route::group(['middleware' => 'api.token'], function () {
     Route::get('/power/show/{id}', 'PowerController@show');
     Route::get('/power/{page}/{limit}', 'PowerController@all');
     Route::put('power/{id}', 'PowerController@put');
+    //带条件的查询
+    Route::post('/power/all', 'PowerController@allWhere');
 });
